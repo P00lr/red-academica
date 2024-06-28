@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('examens', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            $table->string('titulo');
+            $table->text('descripcion');
             $table->string('file_path'); // Para almacenar la ruta del archivo
             $table->timestamps();
         });

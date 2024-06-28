@@ -12,12 +12,12 @@
             <form action="{{ route('examens.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="title">Título</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Descripción</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Archivo</label>

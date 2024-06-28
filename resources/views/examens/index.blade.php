@@ -3,7 +3,9 @@
 @section('title', 'Lista de Exámenes')
 
 @section('content_header')
-    <h1>Lista de Exámenes</h1>
+    <div class="text-center">
+        <h1>Lista de Modelos de Exámenes</h1>
+    </div>
 @stop
 
 @section('content')
@@ -14,7 +16,7 @@
     @endif
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('examens.create') }}" class="btn btn-primary">Crear Examen</a>
+            <a href="{{ route('examens.create') }}" class="btn btn-primary">Subir Nuevo Modelo</a>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover">
@@ -29,16 +31,10 @@
                 <tbody>
                     @foreach($examens as $examen)
                     <tr>
-                        <td>{{ $examen->title }}</td>
-                        <td>{{ $examen->description }}</td>
+                        <td>{{ $examen->titulo }}</td>
+                        <td>{{ $examen->descripcion }}</td>
                         <td>
-                            @if(Str::contains($examen->file_path, ['.jpeg', '.jpg', '.png']))
-                                <a href="{{ Storage::url($examen->file_path) }}" target="_blank">
-                                    <img src="{{ Storage::url($examen->file_path) }}" alt="Archivo" width="100">
-                                </a>
-                            @else
-                                <a href="{{ Storage::url($examen->file_path) }}" target="_blank">Ver Archivo</a>
-                            @endif
+                            <a href="{{ Storage::url($examen->file_path) }}" target="_blank">Ver Archivo</a>
                         </td>
                                             
                         <td>

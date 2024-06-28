@@ -9,5 +9,5 @@ class Examen extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'file_path'];
+    protected $fillable = ['titulo', 'descripcion', 'file_path'];
 }

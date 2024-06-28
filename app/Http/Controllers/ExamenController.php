@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreExamenRequest;
 use App\Models\Examen;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Http\Request;
@@ -19,19 +20,14 @@ class ExamenController extends Controller
         return view('examens.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreExamenRequest $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'file' => 'required|file|mimes:jpeg,png,pdf|max:2048',
-        ]);
-
+       
         $filePath = $request->file('file')->store('uploads', 'public');
 
         Examen::create([
-            'title' => $request->title,
-            'description' => $request->description,
+            'titulo' => $request->titulo,
+            'descripcion' => $request->descripcion,
             'file_path' => $filePath,
         ]);
 
@@ -52,14 +48,8 @@ class ExamenController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'file' => 'sometimes|file|mimes:jpeg,png,pdf|max:2048',
-        ]);
-
         $examen = Examen::findOrFail($id);
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['titulo', 'descripcion']);
 
         if ($request->hasFile('file')) {
             Storage::disk('public')->delete($examen->file_path);

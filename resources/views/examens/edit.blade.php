@@ -3,7 +3,7 @@
 @section('title', 'Editar Examen')
 
 @section('content_header')
-    <h1>Editar Examen</h1>
+    <h1>Editar Modelo de Examen</h1>
 @stop
 
 @section('content')
@@ -13,12 +13,12 @@
                 @csrf
                 @method('PUT')
                 <div class="form-group">
-                    <label for="title">Título</label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ $examen->title }}" required>
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" value="{{ $examen->titulo }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Descripción</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required>{{ $examen->description }}</textarea>
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required>{{ $examen->descripcion }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Archivo</label>
