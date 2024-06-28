@@ -9,9 +9,9 @@
 @stop
 
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+    @if(session('success')){{-- para el mensaje de registrado con exito --}}
+        <div class="alert alert-success" id="success-alert">
+             {{ session('success') }}
         </div>
     @endif
     <div class="card">
@@ -34,7 +34,13 @@
                         <td>{{ $examen->titulo }}</td>
                         <td>{{ $examen->descripcion }}</td>
                         <td>
-                            <a href="{{ Storage::url($examen->file_path) }}" target="_blank">Ver Archivo</a>
+                            @if(Str::contains($examen->file_path, ['.jpeg', '.jpg', '.png']))
+                                <a href="{{ asset('storage/' . $examen->file_path) }}" target="_blank">
+                                    <img src="{{ asset('storage/' . $examen->file_path) }}" alt="Archivo" width="100">
+                                </a>
+                            @else
+                                <a href="{{ asset('storage/' . $examen->file_path) }}" target="_blank">Ver Archivo</a>
+                            @endif
                         </td>
                                             
                         <td>
@@ -53,3 +59,14 @@
         </div>
     </div>
 @stop
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+    });
+</script>

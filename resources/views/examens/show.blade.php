@@ -16,11 +16,12 @@
 
             <div class="text-center">
                 @if(Str::contains($examen->file_path, ['.jpeg', '.jpg', '.png']))
-                    <img src="{{ Storage::url($examen->file_path) }}" alt="Archivo" style="max-width: 100%; height: auto;">
+                    <img src="{{ asset('storage/' . $examen->file_path) }}" alt="Archivo" style="max-width: 100%; height: auto;">
                 @else
-                    <a href="{{ Storage::url($examen->file_path) }}" target="_blank">Ver Archivo</a>
+                    <a href="{{ asset('storage/' . $examen->file_path) }}" target="_blank">Ver Archivo</a>
                 @endif
             </div>
+            
         </div>
     </div>
 @stop

@@ -22,7 +22,7 @@ class ExamenController extends Controller
 
     public function store(StoreExamenRequest $request)
     {
-       
+
         $filePath = $request->file('file')->store('uploads', 'public');
 
         Examen::create([
